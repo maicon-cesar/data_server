@@ -30,7 +30,7 @@ O que você deve nos entregar após a conclusão do desafio:
 
 ### PREMISSAS E REQUISITOS
 
-* Básicas
+#### Básicas
 1. A porta que o software receberá os dados deverá ser configurável por um arquivo de configuração;
 1. O tamanho dos arquivos salvos também deverá ser configurável;
 1. Comunicação TCP;
@@ -38,7 +38,7 @@ O que você deve nos entregar após a conclusão do desafio:
 1. Os arquivos não podem exceder o tamanho máximo em qualquer hipótese;
 
 
-* Intermediárias
+#### Intermediárias
 1. Caso haja a necessidade de armazenar os dados em mais de um arquivo, o arquivo imediatamente anterior deve ter exatamente o tamanho máximo configurado, ou seja, não pode ser menor do que o limite máximo definido;
 1. O nome do arquivo deve ser configurável, como um prefixo, ao qual deve ser anexado uma marca de tempo do momento da abertura do arquivo, e.g.:
 ```
@@ -61,9 +61,7 @@ Observações: Se faz necessário o uso da Boost como biblioteca para desenvolvi
 1. Qual o tempo aproximado gasto no desenvolvimento do software;
 1. E por último, não menos importante, quais a dificuldades que você enfrentou no desafio.
 
-### /*############### Cronometragem da duração de cada etapa #####################*/
-
-### /*################ Instalação e configuração do ambiente #####################*/
+### Instalação e configuração do ambiente 
 - Download e setup de uma máquina virtual Linux Mint 19.2 - Virtual Box
   - link para download: https://www.osboxes.org/linux-mint/
 
@@ -75,7 +73,7 @@ https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html
 - Download e instalação do editor de texto Atom.
   - link para download: https://www.atom.io
 
-### /*################## Considerações para implementação #########################*/
+### Considerações para implementação
 
 - Para permitir múltiplos clientes conectados e garantir que os dados de cada
 conexão sejam armazenados separadamente, optei por alocar um diretório específico
@@ -91,7 +89,7 @@ um arquivo para salvar os dados no mesmo instante (mesma YYYYMMddHHmmss).
 Nesse caso o nome do proximo arquivo será adicionado o sufixo _n:
 prefixo_YYYYMMddHHmmss_n
 
-### /*#################### Análise e modelagem do sistema ########################*/
+### Análise e modelagem do sistema
 
 * Arquivo de configuração deve conter:
 - Porta de abertura do socket
@@ -106,7 +104,7 @@ Os parametros: timeout, save_path, file_name e file_size deverão ser informados
 * A cada nova conexão instanciada, deve ser também instanciado um timer para contagem do
 tempo de timeout da conexão. O timer deve ser atualizado a cada dado recebido.
 
-### /*################## Estudo dos recursos disponíveis #########################*/
+### Estudo dos recursos disponíveis 
 
 Na página: https://www.boost.org/doc/libs/1_71_0/ está disponível a documentação
 de todos os recursos fornecidos pela biblioteca Boost.
