@@ -2,92 +2,133 @@
 
 Desafio técnico para nivelamento C++
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## DICAS:
+- O desafio avalia vários níveis. 
+- Execute o que conseguires. 
+- Entregue o que achares pe
+rtinente. Algo não funcionando, pode ser pertinente.
 
-## Add your files
+## Desafio Técnico
+- Este desafio consiste em desenvolver um software utilizando a linguagem C++ para ambientes Linux. 
+- O intuito do software é receber dados proveniente da rede e salvar estes dados em arquivos localmente, ou seja, será um servidor que receberá dados via stream (socket) e salvará os dados em arquivos de até X bytes.
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Premissas:
+1. A porta que o software receberá os dados deverá ser configurável por um arquivo de configuração;
+1. O tamanho dos arquivos salvos também deverá ser configurável;
+1. Comunicação TCP;
 
+### Observações: Indicamos o uso da Boost como biblioteca utilitária.
+
+O que você deve nos entregar após a conclusão do desafio:
+1. Código-fonte de tudo que foi desenvolvido, esteja o software funcionando ou não;
+1. Makefile, CMakeLists ou linha de compilação;
+1. Informações sobre quais bibliotecas e versões foram utilizadas;
+1. Qual o tempo aproximado gasto no desenvolvimento do software;
+1. E por último, não menos importante, quais a dificuldades que você enfrentou no desafio.
+
+### PREMISSAS E REQUISITOS
+
+* Básicas
+1. A porta que o software receberá os dados deverá ser configurável por um arquivo de configuração;
+1. O tamanho dos arquivos salvos também deverá ser configurável;
+1. Comunicação TCP;
+1. TODOS os dados transmitidos devem ser armazenados corretamente;
+1. Os arquivos não podem exceder o tamanho máximo em qualquer hipótese;
+
+
+* Intermediárias
+1. Caso haja a necessidade de armazenar os dados em mais de um arquivo, o arquivo imediatamente anterior deve ter exatamente o tamanho máximo configurado, ou seja, não pode ser menor do que o limite máximo definido;
+1. O nome do arquivo deve ser configurável, como um prefixo, ao qual deve ser anexado uma marca de tempo do momento da abertura do arquivo, e.g.:
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/technical-challenges1/cpp-maicon-cesar.git
-git branch -M main
-git push -uf origin main
-```
+ - nome_arquivo = PREFIXO
+ - Arquivos gerados:
+ - PREFIXO_20180730145530
+ ```
+1. O servidor deve ativar um timer configurável e, caso o cliente não transmita dados por um tempo igual ou maior a este período, cancelar a conexão;
 
-## Integrate with your tools
+* Avançadas
+1. Permitir a conexão simultânea de vários clientes;
+1. Garantir que os dados de cada conexão sejam armazenados em arquivos separados, cada qual com sua própria sequência.
 
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://gitlab.com/technical-challenges1/cpp-maicon-cesar/-/settings/integrations)
+Observações: Se faz necessário o uso da Boost como biblioteca para desenvolvimento das comunicações em rede.
 
-## Collaborate with your team
+### ENTREGÁVEIS
+1. Código-fonte de tudo que foi desenvolvido, esteja o software funcionando ou não;
+1. Makefile, CMakeLists ou linha de compilação;
+1. Informações sobre quais bibliotecas e versões foram utilizadas;
+1. Qual o tempo aproximado gasto no desenvolvimento do software;
+1. E por último, não menos importante, quais a dificuldades que você enfrentou no desafio.
 
-- [ ] [Invite team members and collaborators](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### /*############### Cronometragem da duração de cada etapa #####################*/
 
-## Test and Deploy
+### /*################ Instalação e configuração do ambiente #####################*/
+- Download e setup de uma máquina virtual Linux Mint 19.2 - Virtual Box
+  - link para download: https://www.osboxes.org/linux-mint/
 
-Use the built-in continuous integration in GitLab.
+- Download, build e instalação da biblioteca Boost V1.71.0
+  - link para download: https://www.boost.org/users/history/version_1_71_0.html
+  - tutorial para build e install:
+https://www.boost.org/doc/libs/1_66_0/more/getting_started/unix-variants.html
 
-- [ ] [Get started with GitLab CI/CD](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://gitlab.com/-/experiment/new_project_readme_content:45c380b27c617f2b457790e988af51c1?https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- Download e instalação do editor de texto Atom.
+  - link para download: https://www.atom.io
 
-***
+### /*################## Considerações para implementação #########################*/
 
-# Editing this README
+- Para permitir múltiplos clientes conectados e garantir que os dados de cada
+conexão sejam armazenados separadamente, optei por alocar um diretório específico
+para armazenar os dados de cada conexão. O nome do diretório segue  padrão:
+cnx_YYYYMMddHHmmss
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com) for this template.
+- Caso haja mais que uma conexão simultaneamente no mesmo instante, o nome do
+diretporio será adicionado do sufixo _n: cnx_YYYYMMddHHmmss_n
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- Caso o volume de dados enviado pelo cliente seja grande comparado ao tamanho
+máximo de arquivo definido, pode acontecer de que seja necessário criar mais de
+um arquivo para salvar os dados no mesmo instante (mesma YYYYMMddHHmmss).
+Nesse caso o nome do proximo arquivo será adicionado o sufixo _n:
+prefixo_YYYYMMddHHmmss_n
 
-## Name
-Choose a self-explaining name for your project.
+### /*#################### Análise e modelagem do sistema ########################*/
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+* Arquivo de configuração deve conter:
+- Porta de abertura do socket
+- Tamanho exato de cada arquivo
+- Nome do arquivo
+- Timeout de recepção
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+* O obejto Servidor deverá instanciar um objeto conexão para cada cliente conectado.
+* O obejto Servidor deverá instanciar um objeto conexão para cada cliente conectado.
+Os parametros: timeout, save_path, file_name e file_size deverão ser informados à conexão.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+* A cada nova conexão instanciada, deve ser também instanciado um timer para contagem do
+tempo de timeout da conexão. O timer deve ser atualizado a cada dado recebido.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### /*################## Estudo dos recursos disponíveis #########################*/
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Na página: https://www.boost.org/doc/libs/1_71_0/ está disponível a documentação
+de todos os recursos fornecidos pela biblioteca Boost.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+- A mesma fornece um módulo denominado "ASIO" que disponibiliza de funcionalidades
+para comunicação utilizando sockets, bem como timers. Funcionalidades essas
+definidas como necessárias para o projeto.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+- As estruturas: acceptor e socket devem ser utilizadas em conjunto para permitir
+a implementação de um socket no modo TCP Server.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- O tutorial 3
+(https://www.boost.org/doc/libs/1_71_0/doc/html/boost_asio/tutorial/tutdaytime3.html)
+forcene um exemplo de como utilizar a boot para a criação de um socket TCP assincrono.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+- A estrutura: steady_timer pode ser utilizada para definir um timer assincrono
+para contagem do tempo de timeout da conexão caso não haja transferencia de dados.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+- O tutorial 4
+(https://www.boost.org/doc/libs/1_71_0/doc/html/boost_asio/tutorial/tuttimer4.html)
+fornece um exemplo de como utilizar um timer utilizando o bind de um handler
+para tratamento do timeout.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 
