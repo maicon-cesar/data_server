@@ -1,0 +1,7 @@
+# Properties to be configured
+
+port=4567
+file_size=8192
+file_name=PREFIXO
+save_path=/mnt/d/tmp
+timeout=5

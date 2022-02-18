@@ -1,0 +1,5 @@
+.history/
+.vscode/
+build/
+cmake-build-debug/
+CMakeSettings.json
