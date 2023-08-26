@@ -7,8 +7,7 @@ Desafio técnico para nivelamento C++
 ## DICAS:
 - O desafio avalia vários níveis. 
 - Execute o que conseguires. 
-- Entregue o que achares pe
-rtinente. Algo não funcionando, pode ser pertinente.
+- Entregue o que achares pertinente. Algo não funcionando, pode ser pertinente.
 
 ## Desafio Técnico
 - Este desafio consiste em desenvolver um software utilizando a linguagem C++ para ambientes Linux. 
